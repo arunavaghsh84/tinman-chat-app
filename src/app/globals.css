@@ -1,0 +1,4 @@
+.bg-hover-light-subtle:hover {
+    background-color: var(--bs-light);
+    cursor: pointer;
+}
