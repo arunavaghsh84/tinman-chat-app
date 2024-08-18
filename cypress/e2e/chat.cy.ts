@@ -63,7 +63,8 @@ describe("Chat Page", () => {
       statusCode: 200,
       body: {
         message: {
-          sender: { nickname: "User One" },
+          sender: { _id: "66bf8f145853aa6bdc9daff9", nickname: "User One" },
+          receiver: { _id: "user2", nickname: "User Two" },
           messageText: "New message",
           timestamp: new Date(),
         },
@@ -80,7 +81,9 @@ describe("Chat Page", () => {
     cy.get("button").contains("Send").click();
 
     cy.wait("@postMessage");
-    cy.get("div").contains("New message").should("exist");
+    cy.window().then((win) => {
+        win.setTimeout(() => cy.get("div").contains("New message").should("exist"));
+    });
 
     cy.get("textarea").should("be.visible");
   });

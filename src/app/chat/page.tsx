@@ -89,7 +89,12 @@ export default function Chat() {
 
     // Listen for new messages
     socket.on("new-message", (message) => {
-      setMessages((currentMessages) => [...currentMessages, message]);
+      const token = localStorage.getItem("token");
+      const sender = decodeToken(token)?.userId;      
+
+      if (message.receiver._id === sender || message.sender._id === sender) {
+        setTimeout(() => setMessages((currentMessages) => [...currentMessages, message]));
+      }
     });
   };
 
