@@ -7,7 +7,7 @@ export interface DecodedToken extends JwtPayload {
 
 export const decodeToken = (token: string): DecodedToken | null => {
   try {
-    return jwtDecode(token) as DecodedToken;
+    return jwtDecode(token);
   } catch (error) {
     console.error("Invalid token:", error);
     return null;

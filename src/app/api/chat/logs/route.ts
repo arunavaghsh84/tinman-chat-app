@@ -6,7 +6,7 @@ export async function GET(req: Request) {
   await connectMongo();
 
   // Create a URL object from the request URL
-  const url = new URL(req.url!, process.env.BASE_URL);
+  const url = new URL(req.url, process.env.BASE_URL);
 
   // Now you can safely access searchParams
   const searchParams = url.searchParams;

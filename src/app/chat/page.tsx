@@ -142,16 +142,14 @@ export default function Chat() {
                 {users.map((user) => (
                   <div
                     key={user._id}
-                    className="bg-hover-light-subtle"
-                    style={{ cursor: "pointer" }}
                   >
-                    <div
+                    <button
                       key={user._id}
                       onClick={() => setReceiver(user._id)}
-                      className={`p-3 ${user._id === receiver && "bg-primary-subtle"}`}
+                      className={`bg-white border-0 w-100 text-start p-3 ${user._id === receiver && "bg-primary-subtle"}`}
                     >
                       {user.nickname}
-                    </div>
+                    </button>
                     <div className="border-bottom border-light-subtle mx-3"></div>
                   </div>
                 ))}
@@ -182,7 +180,7 @@ export default function Chat() {
                   <div>
                     {messages.map((msg, index) => (
                       <div
-                        key={index}
+                        key={msg._id}
                         className={`p-3 ${
                           msg.receiver?._id === sender ? "text-start" : "text-end"
                         }`}

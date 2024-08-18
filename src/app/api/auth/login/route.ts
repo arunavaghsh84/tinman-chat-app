@@ -16,7 +16,7 @@ export async function POST(req: Request) {
     user = await User.create({ nickname });
   }
 
-  const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET as string, {
+  const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, {
     expiresIn: "1h",
   });
 
